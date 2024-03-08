@@ -1,0 +1,13 @@
+../Drivers/ST7796/ST7796.c:28:6:Init_LCD	8	static
+../Drivers/ST7796/ST7796.c:131:6:ST7796_SetWindow	24	static
+../Drivers/ST7796/ST7796.c:151:13:ConvHL	24	static
+../Drivers/ST7796/ST7796.c:165:6:ST7796_DrawBitmap	16	static
+../Drivers/ST7796/ST7796.c:186:6:ST7796_EndOfDrawBitmap	4	static
+../Drivers/ST7796/ST7796.c:195:6:writecommand	16	static
+../Drivers/ST7796/ST7796.c:204:13:writedata	16	static
+../Drivers/ST7796/ST7796.c:213:13:RESET_L	8	static
+../Drivers/ST7796/ST7796.c:218:13:RESET_H	8	static
+../Drivers/ST7796/ST7796.c:223:13:CS_L	8	static
+../Drivers/ST7796/ST7796.c:227:13:CS_H	8	static
+../Drivers/ST7796/ST7796.c:232:13:DC_L	8	static
+../Drivers/ST7796/ST7796.c:237:13:DC_H	8	static

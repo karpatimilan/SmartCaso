@@ -22,7 +22,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "ST7796.h"
+#include "xpt2046.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -86,7 +87,8 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
+  Init_LCD();
+   XPT2046_Init();
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -112,9 +114,10 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  MX_TouchGFX_Process();
     /* USER CODE END WHILE */
 
-  MX_TouchGFX_Process();
+
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -303,7 +306,7 @@ static void MX_TIM2_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN TIM2_Init 2 */
-
+  HAL_TIM_Base_Start_IT(&htim2);
   /* USER CODE END TIM2_Init 2 */
 
 }
@@ -382,7 +385,17 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+extern void touchgfxSignalVSync(void);
 
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+	if (htim->Instance == TIM2) {
+		touchgfxSignalVSync();
+	}
+	if (htim->Instance == TIM1) {
+
+	}
+}
 /* USER CODE END 4 */
 
 /**

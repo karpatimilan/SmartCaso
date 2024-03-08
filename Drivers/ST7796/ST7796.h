@@ -18,8 +18,8 @@
 #define GUI_WIDTH 480
 #define GUI_HEIGHT 320
 
-void ST_Init(void);
-void setWindow(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1);
+ void Init_LCD();
+void ST7796_SetWindow(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1);
 void ST7796_DrawBitmap(uint16_t w, uint16_t h, uint8_t *s);
 void ST7796_EndOfDrawBitmap(void);
 

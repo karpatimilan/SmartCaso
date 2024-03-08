@@ -5,9 +5,20 @@
  *      Author: peter
  */
 
-#ifndef TARGET_TOUCHGFX_DATATRANSFER_H_
-#define TARGET_TOUCHGFX_DATATRANSFER_H_
 
+#ifndef TOUCHGFX_DATATRANSFER_H
+#define TOUCHGFX_DATATRANSFER_H
 
+#include <stdint.h>
 
-#endif /* TARGET_TOUCHGFX_DATATRANSFER_H_ */
+#ifdef __cplusplus
+ extern "C" {
+#endif
+
+void touchgfxDisplayDriverTransmitBlock(uint8_t* pixels, uint16_t x, uint16_t y, uint16_t w, uint16_t h);
+uint32_t touchgfxDisplayDriverTransmitActive(void);
+
+#ifdef __cplusplus
+}
+#endif
+#endif

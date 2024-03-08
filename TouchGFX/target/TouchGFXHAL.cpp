@@ -18,6 +18,7 @@
   *
   ******************************************************************************
   */
+#include "TouchGFX_DataTransfer.h"
 /* USER CODE END Header */
 
 #include <TouchGFXHAL.hpp>

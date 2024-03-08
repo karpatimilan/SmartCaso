@@ -126,9 +126,10 @@ void Init_LCD(){
 
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, 1);
 
+
 }
 
-void setWindow(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1)
+void ST7796_SetWindow(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1)
 {
 	writecommand(0x2A); // Column addr set
 	writedata(x0 >> 8);
@@ -148,7 +149,17 @@ void setWindow(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1)
 
 
 
-
+static void ConvHL(uint8_t *s, int32_t l)
+{
+	uint8_t v;
+	while (l > 0) {
+		v = *(s+1);
+		*(s+1) = *s;
+		*s = v;
+		s += 2;
+		l -= 2;
+	}
+}
 
 
 
@@ -158,18 +169,18 @@ void ST7796_DrawBitmap(uint16_t w, uint16_t h, uint8_t *s)
 	writecommand(0x2C);
 
 	DC_H();
-#if 0
+
 	__HAL_SPI_DISABLE(&hspi1);
 	hspi1.Instance->CR2 |= SPI_DATASIZE_16BIT; // Set 16 bit mode
 	__HAL_SPI_ENABLE(&hspi1);
-#endif
+
 	ConvHL(s, (int32_t)w*h*2);
 	HAL_SPI_Transmit_DMA(&hspi1, (uint8_t*)s, w * h *2);
-#if 0
+
 	__HAL_SPI_DISABLE(&hspi1);
 	hspi1.Instance->CR2 &= ~(SPI_DATASIZE_16BIT); // Set 8 bit mode
 	__HAL_SPI_ENABLE(&hspi1);
-#endif
+
 }
 
 
@@ -185,17 +196,19 @@ void ST7796_EndOfDrawBitmap(void)
 void writecommand(uint8_t data)
 {
 	DC_L();
-	if (HAL_SPI_Transmit(&hspi1, &data, 1, 1000) != HAL_OK) {
+	if (HAL_SPI_Transmit(&hspi1, &data, 1, 1) != HAL_OK) {
 		Error_Handler();
 	}
+	DC_H();
 }
 
 static void writedata(uint8_t data)
 {
 	DC_H();
-	if (HAL_SPI_Transmit(&hspi1, &data, 1, 1000) != HAL_OK) {
+	if (HAL_SPI_Transmit(&hspi1, &data, 1, 1) != HAL_OK) {
 		Error_Handler();
 	}
+	DC_L();
 }
 
 static void RESET_L(void)

@@ -57,16 +57,17 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define T_IRQ_Pin GPIO_PIN_0
-#define T_IRQ_GPIO_Port GPIOC
-#define T_CS_Pin GPIO_PIN_1
-#define T_CS_GPIO_Port GPIOC
-#define T_DIN_Pin GPIO_PIN_2
-#define T_DIN_GPIO_Port GPIOC
-#define T_DO_Pin GPIO_PIN_3
-#define T_DO_GPIO_Port GPIOC
-#define T_CLK_Pin GPIO_PIN_10
+#define T_CS_Pin GPIO_PIN_12
+#define T_CS_GPIO_Port GPIOB
+#define T_CLK_Pin GPIO_PIN_13
 #define T_CLK_GPIO_Port GPIOB
+#define T_DIN_Pin GPIO_PIN_14
+#define T_DIN_GPIO_Port GPIOB
+#define T_DO_Pin GPIO_PIN_15
+#define T_DO_GPIO_Port GPIOB
+#define T_IRQ_Pin GPIO_PIN_8
+#define T_IRQ_GPIO_Port GPIOA
+#define T_IRQ_EXTI_IRQn EXTI9_5_IRQn
 
 /* USER CODE BEGIN Private defines */
 

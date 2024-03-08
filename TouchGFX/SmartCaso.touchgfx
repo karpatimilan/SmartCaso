@@ -20,9 +20,9 @@
               "Blue": 255
             },
             "PressedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
+              "Red": 240,
+              "Green": 19,
+              "Blue": 19
             },
             "TextRotation": "0",
             "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\tiny_round_disabled.json",
@@ -44,9 +44,9 @@
               "Blue": 255
             },
             "PressedColor": {
-              "Red": 255,
-              "Green": 255,
-              "Blue": 255
+              "Red": 204,
+              "Green": 20,
+              "Blue": 20
             },
             "TextRotation": "0",
             "Preset": "alternate_theme\\presets\\button\\regular\\height_50\\tiny_round_disabled.json",
@@ -56,14 +56,14 @@
             "Type": "TextProgress",
             "Name": "textProgress1",
             "X": 158,
-            "Y": 153,
+            "Y": 152,
             "Width": 175,
             "Height": 50,
             "TextId": "__SingleUse_N8Q4",
             "Color": {
-              "Red": 12,
-              "Green": 27,
-              "Blue": 55
+              "Red": 201,
+              "Green": 32,
+              "Blue": 72
             },
             "Preset": "alternate_theme\\presets\\textprogress\\rounded.json",
             "FileNameBackground": "__generated\\alternate_theme_images_widgets_textprogress_backgrounds_rounded_light.png",
@@ -83,8 +83,20 @@
               "TriggerComponent": "buttonWithLabel2_1"
             },
             "Action": {
-              "Type": "ActionCustom",
-              "FunctionName": "function1"
+              "Type": "ActionSetValue",
+              "Value": 10,
+              "ActionComponent": "textProgress1"
+            }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "Trigger": {
+              "Type": "TriggerClicked",
+              "TriggerComponent": "buttonWithLabel2"
+            },
+            "Action": {
+              "Type": "ActionSetValue",
+              "ActionComponent": "textProgress1"
             }
           }
         ]

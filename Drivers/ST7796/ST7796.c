@@ -42,7 +42,7 @@ void Init_LCD(){
 	writedata(0x96);    //Enable extension command 2 partII
 
 	writecommand(0x36); //Memory Data Access Control MX, MY, RGB mode
-	writedata(0x48);    //X-Mirror, Top-Left to right-Buttom, RGB
+	writedata(0x28);    //X-Mirror, Top-Left to right-Buttom, RGB
 
 	writecommand(0x3A); //Interface Pixel Format
 	writedata(0x55);    //Control interface color format set to 16
@@ -124,7 +124,6 @@ void Init_LCD(){
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, 0);
 	writecommand(0x29); //Display on
 
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, 1);
 
 
 }
@@ -169,18 +168,18 @@ void ST7796_DrawBitmap(uint16_t w, uint16_t h, uint8_t *s)
 	writecommand(0x2C);
 
 	DC_H();
-
+#if 0
 	__HAL_SPI_DISABLE(&hspi1);
 	hspi1.Instance->CR2 |= SPI_DATASIZE_16BIT; // Set 16 bit mode
 	__HAL_SPI_ENABLE(&hspi1);
-
+#endif
 	ConvHL(s, (int32_t)w*h*2);
 	HAL_SPI_Transmit_DMA(&hspi1, (uint8_t*)s, w * h *2);
-
+#if 0
 	__HAL_SPI_DISABLE(&hspi1);
 	hspi1.Instance->CR2 &= ~(SPI_DATASIZE_16BIT); // Set 8 bit mode
 	__HAL_SPI_ENABLE(&hspi1);
-
+#endif
 }
 
 
@@ -196,7 +195,7 @@ void ST7796_EndOfDrawBitmap(void)
 void writecommand(uint8_t data)
 {
 	DC_L();
-	if (HAL_SPI_Transmit(&hspi1, &data, 1, 1) != HAL_OK) {
+	if (HAL_SPI_Transmit(&hspi1, &data, 1, 1000) != HAL_OK) {
 		Error_Handler();
 	}
 	DC_H();
@@ -205,7 +204,7 @@ void writecommand(uint8_t data)
 static void writedata(uint8_t data)
 {
 	DC_H();
-	if (HAL_SPI_Transmit(&hspi1, &data, 1, 1) != HAL_OK) {
+	if (HAL_SPI_Transmit(&hspi1, &data, 1, 1000) != HAL_OK) {
 		Error_Handler();
 	}
 	DC_L();

@@ -42,7 +42,7 @@ void Init_LCD(){
 	writedata(0x96);    //Enable extension command 2 partII
 
 	writecommand(0x36); //Memory Data Access Control MX, MY, RGB mode
-	writedata(0x28);    //X-Mirror, Top-Left to right-Buttom, RGB
+	writedata(0xE8);    //X-Mirror, Top-Left to right-Buttom, RGB
 
 	writecommand(0x3A); //Interface Pixel Format
 	writedata(0x55);    //Control interface color format set to 16

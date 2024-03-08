@@ -9,6 +9,8 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include TouchGFX/target/generated/subdir.mk
+-include TouchGFX/target/subdir.mk
 -include TouchGFX/gui/src/screen_screen/subdir.mk
 -include TouchGFX/gui/src/model/subdir.mk
 -include TouchGFX/gui/src/common/subdir.mk
@@ -18,9 +20,7 @@ RM := rm -rf
 -include TouchGFX/generated/gui_generated/src/screen_screen/subdir.mk
 -include TouchGFX/generated/gui_generated/src/common/subdir.mk
 -include TouchGFX/generated/fonts/src/subdir.mk
--include TouchGFX/build/MINGW32_NT-6.2/gui/src/model/subdir.mk
--include TouchGFX/build/MINGW32_NT-6.2/generated/simulator/src/video/subdir.mk
--include TouchGFX/build/MINGW32_NT-6.2/generated/fonts/src/subdir.mk
+-include TouchGFX/App/subdir.mk
 -include Drivers/XPT2046/subdir.mk
 -include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
 -include Drivers/ST7796/subdir.mk

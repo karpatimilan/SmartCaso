@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "app_touchgfx.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -105,6 +106,7 @@ int main(void)
   MX_SPI1_Init();
   MX_SPI2_Init();
   MX_TIM2_Init();
+  MX_TouchGFX_Init();
   /* USER CODE BEGIN 2 */
   Init_LCD();
   HAL_TIM_Base_Start_IT(&htim2);
@@ -117,6 +119,7 @@ int main(void)
 	 //MX_TouchGFX_Process();
     /* USER CODE END WHILE */
 
+  MX_TouchGFX_Process();
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

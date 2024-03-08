@@ -43,7 +43,9 @@ Core/Startup \
 Drivers/ST7796 \
 Drivers/STM32F4xx_HAL_Driver/Src \
 Drivers/XPT2046 \
-TouchGFX/App \
+TouchGFX/build/MINGW32_NT-6.2/generated/fonts/src \
+TouchGFX/build/MINGW32_NT-6.2/generated/simulator/src/video \
+TouchGFX/build/MINGW32_NT-6.2/gui/src/model \
 TouchGFX/generated/fonts/src \
 TouchGFX/generated/gui_generated/src/common \
 TouchGFX/generated/gui_generated/src/screen_screen \
@@ -53,6 +55,4 @@ TouchGFX/generated/texts/src \
 TouchGFX/gui/src/common \
 TouchGFX/gui/src/model \
 TouchGFX/gui/src/screen_screen \
-TouchGFX/target \
-TouchGFX/target/generated \
 
